@@ -1,0 +1,60 @@
+[gd_scene load_steps=6 format=3 uid="uid://b612weguivyfh"]
+
+[ext_resource type="Script" path="res://scripts/Beer.gd" id="1_kmur6"]
+[ext_resource type="PackedScene" uid="uid://dvdq2ptkn1nb5" path="res://assets/Beer.glb" id="2_qoq50"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_il04d"]
+size = Vector3(2, 2, 2.094)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_djjk1"]
+albedo_color = Color(0.672543, 0.391469, 5.77569e-07, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kdniv"]
+albedo_color = Color(0.862745, 0.756863, 0.278431, 1)
+
+[node name="Beer" type="RigidBody3D"]
+collision_layer = 4
+collision_mask = 7
+script = ExtResource("1_kmur6")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, -0.0256816)
+shape = SubResource("BoxShape3D_il04d")
+
+[node name="Beer2" parent="CollisionShape3D" instance=ExtResource("2_qoq50")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0873949)
+
+[node name="Beer" parent="CollisionShape3D/Beer2" index="0"]
+material_override = SubResource("StandardMaterial3D_djjk1")
+
+[node name="Water_001" parent="CollisionShape3D/Beer2" index="1"]
+material_override = SubResource("StandardMaterial3D_kdniv")
+
+[node name="Water" parent="CollisionShape3D/Beer2" index="2"]
+material_override = SubResource("StandardMaterial3D_kdniv")
+
+[node name="Water_002" parent="CollisionShape3D/Beer2" index="3"]
+material_override = SubResource("StandardMaterial3D_kdniv")
+
+[node name="Water_003" parent="CollisionShape3D/Beer2" index="4"]
+material_override = SubResource("StandardMaterial3D_kdniv")
+
+[node name="Water_004" parent="CollisionShape3D/Beer2" index="5"]
+material_override = SubResource("StandardMaterial3D_kdniv")
+
+[node name="Water_009" parent="CollisionShape3D/Beer2" index="6"]
+material_override = SubResource("StandardMaterial3D_kdniv")
+
+[node name="Water_008" parent="CollisionShape3D/Beer2" index="7"]
+material_override = SubResource("StandardMaterial3D_kdniv")
+
+[node name="Water_007" parent="CollisionShape3D/Beer2" index="8"]
+material_override = SubResource("StandardMaterial3D_kdniv")
+
+[node name="Water_006" parent="CollisionShape3D/Beer2" index="9"]
+material_override = SubResource("StandardMaterial3D_kdniv")
+
+[node name="Water_005" parent="CollisionShape3D/Beer2" index="10"]
+material_override = SubResource("StandardMaterial3D_kdniv")
+
+[editable path="CollisionShape3D/Beer2"]

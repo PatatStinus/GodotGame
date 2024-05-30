@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://chsguchoghgs7"]
+
+[ext_resource type="Script" path="res://scripts/put_beer_spot.gd" id="1_n6mu3"]
+[ext_resource type="Script" path="res://scripts/CustomerWalkSpot.gd" id="2_1rndb"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_521hy"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_iibiy"]
+
+[node name="PutBeerSpot" type="Area3D"]
+collision_mask = 4
+script = ExtResource("1_n6mu3")
+
+[node name="Target" type="Area3D" parent="."]
+transform = Transform3D(0.565, 0, 0, 0, 0.565, 0, 0, 0, 0.565, 0, -0.404445, 1.00518)
+collision_mask = 16
+script = ExtResource("2_1rndb")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Target"]
+shape = SubResource("BoxShape3D_521hy")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_iibiy")
+
+[node name="Marker3D" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+
+[connection signal="body_entered" from="." to="." method="body_entered"]
+[connection signal="body_exited" from="." to="." method="body_exited"]
+[connection signal="body_entered" from="Target" to="Target" method="_on_body_entered"]
+[connection signal="body_exited" from="Target" to="Target" method="_on_body_exited"]
